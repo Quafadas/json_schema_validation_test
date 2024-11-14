@@ -18,7 +18,8 @@ import upickle.core.Visitor
     ujson.Readable.fromString(schema.text()),
     registry = registry
   )
-  val validator: Visitor[?, OutputUnit] = json_schema.validator(sch)
+  val validator: Visitor[?, OutputUnit] =
+    json_schema.validator(sch, registry = registry)
   val result: OutputUnit = ujson.Str("foo").transform(validator)
 
   println(result.valid)
